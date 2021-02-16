@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import BtnWrapper from "./components/BtnWrapper/BtnWrapper/BtnWrapper";
+import TitleWrapper from "./components/TitleWrapper/TitleWrapper/TitleWrapper";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    let [counter, setCounter] = useState(0)
+
+    const onIncrement = () => {setCounter(counter + 1)}
+
+    const onDecrement = () => {setCounter(counter - 1)}
+
+    const onReset = () => {setCounter(0)}
+
+    return(
+        <div className={'container'}>
+            <TitleWrapper counter={counter}/>
+            <BtnWrapper counter={counter} onIncrement={onIncrement} onDecrement={onDecrement} onReset={onReset}/>
+        </div>
+    );
 }
 
 export default App;
